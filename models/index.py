@@ -1,0 +1,2 @@
+## EN ESTA CARPETA VAN TODOS LOS MODELOS (UN ARCHIVO POR CADA MODELO)
+from models.Employee import *
