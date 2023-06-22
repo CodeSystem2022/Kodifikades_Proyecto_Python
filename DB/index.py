@@ -14,5 +14,3 @@ def initialize_database():
         return cursor
     except Exception as ex:
         print(ex)
-
-initialize_database()
