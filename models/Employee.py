@@ -27,7 +27,7 @@ cursor.connection.commit()
 
 class Employee:
     def __init__(self, id_employee, name, email, surname, dni, address, education_level, civil_status, phone_number, incorporation, department, salary):
-        self.id = id
+        self.id = id_employee
         self.name = name
         self.surname = surname
         self.dni = dni
