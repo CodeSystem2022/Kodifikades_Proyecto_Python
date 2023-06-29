@@ -164,3 +164,9 @@ class Interface:
         self.tabla_datos.grid(row=9, column=0, columnspan=7, padx=(20, 0))
         self.tabla_datos.tag_configure('orow', background='#EEEEEE', font=('Arial', 12))
         self.actualizar_tabla()
+        
+        # Barra navegación
+        self.scrollbar = ttk.Scrollbar(self.raiz, orient="vertical", command=self.tabla_datos.yview)
+        self.scrollbar.grid(row=9, column=8, sticky="ns")
+        self.tabla_datos.configure(yscrollcommand=self.scrollbar.set)
+
