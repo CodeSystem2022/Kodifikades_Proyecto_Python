@@ -345,3 +345,44 @@ class Interface:
                 return
         self.actualizar_tabla()
         self.limpiar()
+
+   #----------BUSCAR----------
+    def buscar(self):
+        # Obtener los valores ingresados en los campos de búsqueda
+        id_empleado = self.EmpleadosEntry.get()
+        depto = self.deptoEntry.get()
+        nombre = self.nombreEntry.get()
+        apellido = self.apellidoEntry.get()
+        dni = self.dniEntry.get()
+        estado = self.estadoEntry.get()
+        # Consulta SQL para buscar empleados según los criterios ingresados
+        query = "SELECT * FROM empleados WHERE TRUE"
+        if id_empleado:
+            query += f" AND id_empleado = {id_empleado}"
+        if depto:
+            query += f" AND depto = '{depto}'"
+        if nombre:
+            query += f" AND nombre ILIKE '%{nombre}%'"
+        if apellido:
+            query += f" AND apellido ILIKE '%{apellido}%'"
+        if dni:
+            query += f" AND dni = {dni}"
+        if estado:
+            query += f" AND estado = '{estado}'"
+        try:
+            with Conexion.obtenerConexion() as con:
+                cursor = con.cursor()
+                cursor.execute(query)
+                filas = cursor.fetchall()
+                # Ordenar los resultados de forma descendente
+                filas.sort(reverse=False)
+                # Actualizar la tabla con los resultados de la búsqueda
+                self.tabla_datos.delete(*self.tabla_datos.get_children())
+                for row in filas:
+                    self.tabla_datos.insert(parent='', index='end', iid=row, text="", values=(row), tag="orow")
+                self.tabla_datos.tag_configure('orow', background='#EEEEEE', font=('Arial', 12))
+        except Exception as e:
+            # Manejar la excepción cuando no se encuentran resultados
+            print("Error en la búsqueda:", e)
+        self.limpiar()    
+
