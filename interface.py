@@ -386,3 +386,21 @@ class Interface:
             print("Error en la búsqueda:", e)
         self.limpiar()    
 
+    #----------ELIMINAR----------
+    def eliminar(self):
+        decision = messagebox.askquestion("Confirmar eliminación", "Eliminar?")
+        if decision != "yes":
+            return 
+        else:
+            item_seleccionado = self.tabla_datos.selection()[0]
+            id_seleccionado = str(self.tabla_datos.item(item_seleccionado)['values'][0])
+            try:
+                with Conexion.obtenerConexion() as con:
+                    cursor = con.cursor()
+                    cursor.execute("DELETE FROM empleados WHERE id_empleado=%s", (id_seleccionado,))
+                    con.commit()
+            except:
+                messagebox.showinfo("Error", "Ocurrió un error")
+                return
+            self.actualizar_tabla()
+            self.limpiar()
