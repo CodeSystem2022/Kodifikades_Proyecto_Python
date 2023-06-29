@@ -249,6 +249,7 @@ class Interface:
         if num ==10:
             self._ph10.set(word)
     
+
     # ----------AGREGAR-----------
     def agregar(self):
         nombre = str(self.nombreEntry.get())
@@ -281,6 +282,7 @@ class Interface:
         self.actualizar_tabla()
         self.limpiar()
 
+
     # ----------SELECCIONAR----------
     def seleccionar(self):
         try:
@@ -308,6 +310,8 @@ class Interface:
         except:
             messagebox.showinfo("Error", "Debe seleccionar una fila")
 
+
+    # ----------ACTUALIZAR----------
     def actualizar(self):
         id_seleccionado = ""
         try:
@@ -345,6 +349,7 @@ class Interface:
                 return
         self.actualizar_tabla()
         self.limpiar()
+
 
    #----------BUSCAR----------
     def buscar(self):
@@ -385,6 +390,7 @@ class Interface:
             # Manejar la excepción cuando no se encuentran resultados
             print("Error en la búsqueda:", e)
         self.limpiar()    
+
 
     #----------ELIMINAR----------
     def eliminar(self):
