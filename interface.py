@@ -11,6 +11,7 @@ class Interface:
         self.raiz.title("KODIFIKADES - UTN FRSR")
         self.raiz.geometry("1800x820")
 
+        
         # Placeholders de los Entry
         self._ph1 = tkinter.StringVar()
         self._ph2 = tkinter.StringVar()
@@ -31,6 +32,7 @@ class Interface:
         # --------------------------
         # ----------CAMPOS----------
         # -------------------------
+        
         #----------COLUMNA 0 Y 1 (Datos principales - NOT NULL ) ----------
         # Nombre/s
         self.nombreLabel = Label(self.raiz, text="*Nombre:", font=('Arial', 15))
@@ -56,6 +58,7 @@ class Interface:
         self.EmpleadosEntry = Entry(self.raiz, bd=2, font=('Arial', 15),textvariable = self._ph11)
         self.EmpleadosEntry.grid(row=7, column=1,  padx=5, pady=(0, 40))
 
+        
         #----------COLUMNA 2 Y 3 (Datos secundarios)----------
         # Email
         self.emailLabel = Label(self.raiz, text="Email:", font=('Arial', 15))
