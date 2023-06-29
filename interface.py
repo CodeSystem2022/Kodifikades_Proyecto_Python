@@ -100,3 +100,27 @@ class Interface:
         self.salarioLabel.grid(row=6, column=4,  padx=50, pady=5, sticky="w")
         self.salarioEntry = Entry(self.raiz, bd=2, font=('Arial', 15),textvariable = self._ph10)
         self.salarioEntry.grid(row=6, column=5,  padx=5, pady=0)
+        
+        #--------------------------
+        #----------BOTONES---------
+        # -------------------------
+
+        # Agregar
+        self.agregarBtn = Button(self.raiz, text="Agregar", bd=2, font=('Arial', 20), bg="#84F894", width=15, command=self.agregar)
+        self.agregarBtn.grid(row=3, column=6, padx=(30, 0))
+
+        # Actualizar        
+        self.actualizarBtn = Button(self.raiz, text="Actualizar", bd=2, font=('Arial', 20), bg="#84E8F8", width=15,command=self.actualizar)
+        self.actualizarBtn.grid(row=4, column=6, padx=(30, 0))
+
+        # Eliminar
+        self.eliminarBtn = Button(self.raiz, text="Eliminar", bd=2, font=('Arial', 20), bg="#FF9999",width=15, command=self.eliminar)
+        self.eliminarBtn.grid(row=5, column=6, padx=(30, 0))
+
+        # Seleccionar
+        self.seleccionarBtn = Button(self.raiz, text="Seleccionar", bd=2, font=('Arial', 20), bg="#fdcae1",width=15, command=self.seleccionar)
+        self.seleccionarBtn.grid(row=6, column=6, padx=(30, 0))
+
+        # Buscar
+        self.buscarBtn = Button(self.raiz, text="Buscar", bd=2, font=('Arial', 20), bg="#ff8000",width=15, command=self.buscar)
+        self.buscarBtn.grid(row=7, column=6, padx=(30, 0), pady=(0, 40))
