@@ -224,4 +224,28 @@ class Interface:
             self.ph_set("",i)
 
 
+    #----------SET DE LOS PLACEHOLDERS----------
+    def ph_set(self,word,num):
+        if word == "None":
+            word = ""
+        if num ==1:
+            self._ph1.set(word)
+        if num ==2:
+            self._ph2.set(word)
+        if num ==3:
+            self._ph3.set(word)
+        if num ==4:
+            self._ph4.set(word)
+        if num ==5:
+            self._ph5.set(word)
+        if num ==6:
+            self._ph6.set(word)
+        if num ==7:
+            self._ph7.set(word)
+        if num ==8:
+            self._ph8.set(word)
+        if num ==9:
+            self._ph9.set(word)
+        if num ==10:
+            self._ph10.set(word)
     
