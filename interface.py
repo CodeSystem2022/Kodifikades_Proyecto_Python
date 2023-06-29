@@ -307,3 +307,41 @@ class Interface:
             self.ph_set(salario,10)
         except:
             messagebox.showinfo("Error", "Debe seleccionar una fila")
+
+    def actualizar(self):
+        id_seleccionado = ""
+        try:
+            item_seleccionado = self.tabla_datos.selection()[0]
+            id_seleccionado = str(self.tabla_datos.item(item_seleccionado)['values'][0])
+        except:
+            messagebox.showinfo("Error", "Debe seleccionar una fila")
+            return
+        nombre = str(self.nombreEntry.get())
+        apellido = str(self.apellidoEntry.get())
+        dni = str(self.dniEntry.get())
+        email = str(self.emailEntry.get())
+        telefono = str(self.telefonoEntry.get())
+        edad = str(self.edadEntry.get())
+        estado = str(self.estadoEntry.get())
+        fecha = str(self.fechaEntry.get())
+        depto = str(self.deptoEntry.get())
+        salario = str(self.salarioEntry.get())
+        variables = [nombre, apellido, dni, email, telefono, edad, estado, fecha, depto, salario]
+        for i in range(len(variables)):
+            if not variables[i]:
+                variables[i] = None
+        if (nombre == "" or nombre == " ") or (apellido == "" or apellido == " ") or (dni == "" or dni == " "):
+            messagebox.showinfo("Error", "Complete los campos faltantes")
+            return
+        else:
+            try:
+                with Conexion.obtenerConexion() as con:
+                    cursor = con.cursor()
+                    cursor.execute("UPDATE empleados SET nombre=%s, apellido=%s, dni=%s, email=%s, telefono=%s, edad=%s, estado=%s, fecha=%s, depto=%s, salario=%s WHERE id_empleado=%s", 
+                                (variables[0], variables[1], variables[2], variables[3], variables[4], variables[5], variables[6], variables[7], variables[8], variables[9], id_seleccionado))
+                    con.commit()
+            except:
+                messagebox.showinfo("Error", "Ocurrió un error")
+                return
+        self.actualizar_tabla()
+        self.limpiar()
