@@ -192,3 +192,36 @@ class Interface:
         self.imagen_tk3 = ImageTk.PhotoImage(self.imagen3)
         self.label_imagen3 = Label(self.raiz, image=self.imagen_tk3)
         self.label_imagen3.grid(row=10, column=6, pady=50, columnspan=3)
+        
+
+    #---------------------------
+    #----------MÉTODOS----------
+    # --------------------------
+
+    def leer(self):
+        with Conexion.obtenerConexion() as con:
+            cursor = con.cursor()
+            cursor.execute("SELECT * FROM empleados")
+            resultados = cursor.fetchall()
+            con.commit()
+        return resultados    
+
+
+    #----------Actualizar tabla----------
+    def actualizar_tabla(self):
+            for data in self.tabla_datos.get_children():
+                self.tabla_datos.delete(data)
+            data_array = self.leer()
+            data_array.sort(reverse=False)  # Invertir el orden de los datos
+            for array in data_array:
+                self.tabla_datos.insert(parent='', index='end', iid=array, text="", values=(array), tag="orow")
+            self.tabla_datos.tag_configure('orow', background='#EEEEEE', font=('Arial', 12))
+            
+
+    #----------Limpiar----------
+    def limpiar(self):
+        for i in range(11):
+            self.ph_set("",i)
+
+
+    
