@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  Empleados:
+    image: postgres:15.3
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: dbempleados
+    ports:
+      - 5080:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
