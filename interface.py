@@ -204,4 +204,15 @@ class Interface:
             cursor.execute("SELECT * FROM empleados")
             resultados = cursor.fetchall()
             con.commit()
-        return resultados
+        return resultados    
+
+
+    #----------Actualizar tabla----------
+    def actualizar_tabla(self):
+            for data in self.tabla_datos.get_children():
+                self.tabla_datos.delete(data)
+            data_array = self.leer()
+            data_array.sort(reverse=False)  # Invertir el orden de los datos
+            for array in data_array:
+                self.tabla_datos.insert(parent='', index='end', iid=array, text="", values=(array), tag="orow")
+            self.tabla_datos.tag_configure('orow', background='#EEEEEE', font=('Arial', 12))
