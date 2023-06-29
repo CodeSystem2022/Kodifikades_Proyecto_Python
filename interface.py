@@ -216,3 +216,12 @@ class Interface:
             for array in data_array:
                 self.tabla_datos.insert(parent='', index='end', iid=array, text="", values=(array), tag="orow")
             self.tabla_datos.tag_configure('orow', background='#EEEEEE', font=('Arial', 12))
+            
+
+    #----------Limpiar----------
+    def limpiar(self):
+        for i in range(11):
+            self.ph_set("",i)
+
+
+    
