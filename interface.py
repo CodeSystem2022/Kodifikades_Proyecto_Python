@@ -249,3 +249,61 @@ class Interface:
         if num ==10:
             self._ph10.set(word)
     
+    # ----------AGREGAR-----------
+    def agregar(self):
+        nombre = str(self.nombreEntry.get())
+        apellido = str(self.apellidoEntry.get())
+        dni = str(self.dniEntry.get())
+        email = str(self.emailEntry.get())
+        telefono = str(self.telefonoEntry.get())
+        edad = str(self.edadEntry.get())
+        estado = str(self.estadoEntry.get())
+        fecha = str(self.fechaEntry.get())
+        depto = str(self.deptoEntry.get())
+        salario = str(self.salarioEntry.get())
+        variables = [nombre, apellido, dni, email, telefono, edad, estado, fecha, depto, salario]
+        for i in range(len(variables)):
+            if not variables[i]:
+                variables[i] = None
+        if (nombre == "" or nombre == " ") or (apellido == "" or apellido == " ") or (dni == "" or dni == " "):
+            messagebox.showinfo("Error", "Complete los datos obligatorios")
+            return
+        else:
+            try:
+                with Conexion.obtenerConexion() as con:
+                    cursor = con.cursor()
+                    cursor.execute("INSERT INTO empleados (nombre, apellido, dni, email, telefono, edad, estado, fecha, depto, salario) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                                (variables[0], variables[1], variables[2], variables[3], variables[4], variables[5], variables[6], variables[7], variables[8], variables[9]))
+                    con.commit()
+            except:
+                messagebox.showinfo("Error", "Ocurrió un error")
+                return
+        self.actualizar_tabla()
+        self.limpiar()
+
+    # ----------SELECCIONAR----------
+    def seleccionar(self):
+        try:
+            item_seleccionado = self.tabla_datos.selection()[0]
+            nombre = str(self.tabla_datos.item(item_seleccionado)['values'][1])
+            apellido = str(self.tabla_datos.item(item_seleccionado)['values'][2])
+            dni = str(self.tabla_datos.item(item_seleccionado)['values'][3])
+            email = str(self.tabla_datos.item(item_seleccionado)['values'][4])
+            telefono = str(self.tabla_datos.item(item_seleccionado)['values'][5])
+            edad = str(self.tabla_datos.item(item_seleccionado)['values'][6])
+            estado = str(self.tabla_datos.item(item_seleccionado)['values'][7])
+            fecha = str(self.tabla_datos.item(item_seleccionado)['values'][8])
+            depto = str(self.tabla_datos.item(item_seleccionado)['values'][9])
+            salario = str(self.tabla_datos.item(item_seleccionado)['values'][10])
+            self.ph_set(nombre,1)
+            self.ph_set(apellido,2)
+            self.ph_set(dni,3)
+            self.ph_set(email,4)
+            self.ph_set(telefono,5)
+            self.ph_set(edad,6)
+            self.ph_set(estado,7)
+            self.ph_set(fecha,8)
+            self.ph_set(depto,9)
+            self.ph_set(salario,10)
+        except:
+            messagebox.showinfo("Error", "Debe seleccionar una fila")
