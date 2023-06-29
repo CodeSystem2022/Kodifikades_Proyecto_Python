@@ -127,3 +127,40 @@ class Interface:
         # Buscar
         self.buscarBtn = Button(self.raiz, text="Buscar", bd=2, font=('Arial', 20), bg="#ff8000",width=15, command=self.buscar)
         self.buscarBtn.grid(row=7, column=6, padx=(30, 0), pady=(0, 40))
+        
+        #--------------------------
+        #-------VISUALIZADOR-------
+        # -------------------------
+
+        # Tabla
+        self.tabla_datos = ttk.Treeview(self.raiz)
+        self.style = ttk.Style()
+        self.style.configure("Treeview.Heading", font=('Arial Bold', 15))
+        self.tabla_datos['columns'] = ("Id","Nombre","Apellido","DNI","Email","Telefono","Edad","Estado","Fecha Incorporacion","Departamento","Salario")
+        self.tabla_datos.column("#0", width=0, stretch=NO)
+        self.tabla_datos.column("Id", anchor=W, width=150)
+        self.tabla_datos.column("Nombre", anchor=W, width=150)
+        self.tabla_datos.column("Apellido", anchor=W, width=150)
+        self.tabla_datos.column("DNI", anchor=W, width=150)
+        self.tabla_datos.column("Email", anchor=W, width=230)
+        self.tabla_datos.column("Telefono", anchor=W, width=150)
+        self.tabla_datos.column("Edad", anchor=W, width=150)
+        self.tabla_datos.column("Estado", anchor=W, width=150)
+        self.tabla_datos.column("Fecha Incorporacion", anchor=W, width=150)
+        self.tabla_datos.column("Departamento", anchor=W, width=150)
+        self.tabla_datos.column("Salario", anchor=W, width=150)
+        self.tabla_datos.heading("#0", text="", anchor=W)
+        self.tabla_datos.heading("Id", text="ID", anchor=W)
+        self.tabla_datos.heading("Nombre", text="Nombre", anchor=W)
+        self.tabla_datos.heading("Apellido", text="Apellido", anchor=W)
+        self.tabla_datos.heading("DNI", text="DNI", anchor=W)
+        self.tabla_datos.heading("Email", text="Email", anchor=W)
+        self.tabla_datos.heading("Telefono", text="Teléfono", anchor=W)
+        self.tabla_datos.heading("Edad", text="Edad", anchor=W)
+        self.tabla_datos.heading("Estado", text="Estado", anchor=W)
+        self.tabla_datos.heading("Fecha Incorporacion", text="Fecha", anchor=W)
+        self.tabla_datos.heading("Departamento", text="Depto", anchor=W)
+        self.tabla_datos.heading("Salario", text="Salario", anchor=W)
+        self.tabla_datos.grid(row=9, column=0, columnspan=7, padx=(20, 0))
+        self.tabla_datos.tag_configure('orow', background='#EEEEEE', font=('Arial', 12))
+        self.actualizar_tabla()
