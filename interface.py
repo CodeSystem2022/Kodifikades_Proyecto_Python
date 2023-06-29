@@ -170,3 +170,25 @@ class Interface:
         self.scrollbar.grid(row=9, column=8, sticky="ns")
         self.tabla_datos.configure(yscrollcommand=self.scrollbar.set)
 
+
+        #---------------------------
+        #-----------LOGOS-----------
+        # --------------------------
+
+        # Imagen UTN
+        self.imagen = Image.open("utn.png")
+        self.imagen = self.imagen.resize((215,100), Image.ANTIALIAS)
+        self.imagen_tk = ImageTk.PhotoImage(self.imagen)
+        self.label_imagen = Label(self.raiz, image=self.imagen_tk)
+        self.label_imagen.grid(row=10, column=0, pady=30, padx=30)
+
+        # Label Datos Obligatorios
+        self.label = Label(self.raiz, text="* Datos Obligatorios", font=('Arial Bold', 13),fg="red")
+        self.label.grid(row=10, column=3, pady=(80,0))
+
+        # Imagen Kodikikades
+        self.imagen3 = Image.open("kodifikades.png")
+        self.imagen3 = self.imagen3.resize((250,100), Image.ANTIALIAS)
+        self.imagen_tk3 = ImageTk.PhotoImage(self.imagen3)
+        self.label_imagen3 = Label(self.raiz, image=self.imagen_tk3)
+        self.label_imagen3.grid(row=10, column=6, pady=50, columnspan=3)
