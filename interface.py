@@ -56,3 +56,47 @@ class Interface:
         self.EmpleadosEntry = Entry(self.raiz, bd=2, font=('Arial', 15),textvariable = self._ph11)
         self.EmpleadosEntry.grid(row=7, column=1,  padx=5, pady=(0, 40))
 
+        #----------COLUMNA 2 Y 3 (Datos secundarios)----------
+        # Email
+        self.emailLabel = Label(self.raiz, text="Email:", font=('Arial', 15))
+        self.emailLabel.grid(row=3, column=2, padx=50, pady=5, sticky="w")
+        self.emailEntry = Entry(self.raiz,  bd=2, font=('Arial', 15),textvariable = self._ph4)
+        self.emailEntry.grid(row=3, column=3, padx=5, pady=0)
+
+        # Teléfono
+        self.telefonoLabel = Label(self.raiz, text="Teléfono:", font=('Arial', 15))
+        self.telefonoLabel.grid(row=4, column=2,  padx=50, pady=5, sticky="w")
+        self.telefonoEntry = Entry(self.raiz, bd=2, font=('Arial', 15),textvariable = self._ph5)
+        self.telefonoEntry.grid(row=4, column=3,  padx=5, pady=0)
+
+        # Edad
+        self.edadLabel = Label(self.raiz, text="Edad:", font=('Arial', 15))
+        self.edadLabel.grid(row=5, column=2, padx=50, pady=5, sticky="w")
+        self.edadEntry = Entry(self.raiz,  bd=2, font=('Arial', 15),textvariable = self._ph6)
+        self.edadEntry.grid(row=5, column=3, padx=5, pady=0)
+
+
+        #----------COLUMNA 4 Y 5 (Datos empresa)----------
+        # Estado
+        self.estadoLabel = Label(self.raiz, text="Estado:", font=('Arial', 15))
+        self.estadoLabel.grid(row=3, column=4,  padx=50, pady=5, sticky="w")
+        self.estadoEntry = ttk.Combobox(values=["","Activo","Licencia","Vacaciones","Despido","Renuncia"], width=35, textvariable = self._ph7)
+        self.estadoEntry.grid(row=3, column=5)
+
+        # Fecha incorporación
+        self.fechaLabel = Label(self.raiz, text="Fecha Incorporación:", font=('Arial', 15))
+        self.fechaLabel.grid(row=4, column=4, padx=50, pady=5, sticky="w")
+        self.fechaEntry = Entry(self.raiz, bd=2, font=('Arial', 15),textvariable = self._ph8)
+        self.fechaEntry.grid(row=4, column=5,  padx=5, pady=0)
+
+        # Departamento
+        self.deptoLabel = Label(self.raiz, text="Departamento:", font=('Arial', 15))
+        self.deptoLabel.grid(row=5, column=4, padx=50, pady=5, sticky="w")
+        self.deptoEntry = ttk.Combobox(values=["","Sistemas", "Finanzas", "Marketing", "RRHH", "Ventas", "Atención al Cliente"], width=35,textvariable = self._ph9)
+        self.deptoEntry.grid(row=5, column=5)
+
+        # Salario
+        self.salarioLabel = Label(self.raiz, text="Salario:", font=('Arial', 15))
+        self.salarioLabel.grid(row=6, column=4,  padx=50, pady=5, sticky="w")
+        self.salarioEntry = Entry(self.raiz, bd=2, font=('Arial', 15),textvariable = self._ph10)
+        self.salarioEntry.grid(row=6, column=5,  padx=5, pady=0)
