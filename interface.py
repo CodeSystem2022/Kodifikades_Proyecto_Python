@@ -192,3 +192,16 @@ class Interface:
         self.imagen_tk3 = ImageTk.PhotoImage(self.imagen3)
         self.label_imagen3 = Label(self.raiz, image=self.imagen_tk3)
         self.label_imagen3.grid(row=10, column=6, pady=50, columnspan=3)
+        
+
+    #---------------------------
+    #----------MÉTODOS----------
+    # --------------------------
+
+    def leer(self):
+        with Conexion.obtenerConexion() as con:
+            cursor = con.cursor()
+            cursor.execute("SELECT * FROM empleados")
+            resultados = cursor.fetchall()
+            con.commit()
+        return resultados
